@@ -9,8 +9,9 @@ import Foundation
 import SwiftUI
 
 struct BusView: View {
+    @State var scale = 1.0
+    @State var go = false
     var body: some View {
-        
             VStack {
                 ZStack(alignment: .topTrailing) {
                     Image(systemName: "bus")
@@ -19,19 +20,26 @@ struct BusView: View {
                         .foregroundColor(Color.pink)
                     
                     Image(systemName: "circle.fill")
-                        .foregroundColor(Color.yellow)
-                        .font(.system(size:60))
+                        .foregroundColor(Color.green)
+                        .font(.system(size:40))
         
                 }
-                
-                
+                .scaleEffect(scale)
+                .onAppear {
+                                let baseAnimation = Animation.linear(duration: 1)
+                                let repeated = baseAnimation.repeatCount(5)
+
+                                withAnimation(repeated) {
+                                    scale = 0.5
+                                }
+                            }
                 Text("Wellcome! to a new brand version of Bus")
-                    .foregroundColor(Color.orange)
-                
-                
+                    .foregroundColor(Color.white)
+                    .animation(Animation.linear(duration: 5).repeatForever(autoreverses: true), value: go)
+                   
             }
                 .frame(minWidth: 0,maxWidth: .infinity,minHeight: 0,maxHeight: .infinity)
-                .background(Color.blue)
+                .background(Color.black)
     }
 }
 var m = Bus(brand:"Caramel",id:29)
