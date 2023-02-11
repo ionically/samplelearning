@@ -33,8 +33,10 @@ struct BusView: View {
                                     scale = 0.5
                                 }
                             }
-                Text("Wellcome! to a new brand version of Bus")
+                Text("Wellcome! to a new brand version of bus")
                     .foregroundColor(Color.white)
+                Text("Caramel")
+                    .foregroundColor(Color.pink)
                     .animation(Animation.linear(duration: 5).repeatForever(autoreverses: true), value: go)
                    
             }
